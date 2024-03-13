@@ -1,21 +1,31 @@
 
-import React from 'react'
-import classes from './Navbar.module.css'
-import CartWidget from '../Cardwidget'
-
+import logo from '/logo-restaurant.png'
+import CartWidget from '../CartWidget/CartWidget'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-    return(
-        <header classes={classes.header}>
-        <h3 className='d-flex justify-content-center bg-primary aling-items-center' style={{color:'white', fontSize:40,}}> Bienvenidos a ... </h3>
-         <nav className='d-flex justify-content-center aling-items-center bg-black' style={{color:'black', fontSize:30, }}>
-            <button className='btn btn-dark m-3'>HOME</button>
-            <button className='btn btn-dark m-3'>PRODUCTOS</button>
-            <button className='btn btn-dark m-3'>CONTACTO</button>
-            <CartWidget/>
-         </nav>
+    return (
+    
+
+      <nav className="bg-gray-800 p-4 sticky top-0 z-10 grid grid-cols-3">
+         <div className="flex items-center justify-between w-full p20" >
+          <div className="flex items-center">
+          <Link to='/'> <img src={logo} alt="Logo" className="h-8 w-18 mr-2" /></Link>
+          <Link to='/'><span className="text-white text-lg pr-12 font-semibold">Restaurant Pepito</span></Link>
+          </div>
+        </div>
+        <ul className="flex space-x-4 text-white">
+        <li>  <Link to='/category/Principal'>Principal</Link> </li>
+        <li>   <Link to='/category/Sushi'>Sushi</Link></li>
+        <li>     <Link to='/category/Sandwiches'>Sandwiches</Link></li>
+        </ul>
+        <CartWidget className="col-span-1 flex  justify-end" />
+        </nav>
          
-        </header>
-    )
-}
+
+    );
+  };
+
+ 
+
 export default Navbar
